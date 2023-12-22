@@ -9,7 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
+        GeometryReader {
+            let size = $0.size
+            ZStack {
+                Image("background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: size.width)
+                    .blur(radius: 45, opaque: true)
+                    .clipped()
+            }
+            .ignoresSafeArea()
+        }
     }
 }
 
